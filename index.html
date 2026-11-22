@@ -135,6 +135,41 @@ button,.card{touch-action:manipulation}
   .fim{padding:24px 16px}.anel{transform:scale(.85)}
 }
 @media(max-width:560px){.p{font-size:18px}.acoes button{height:52px;font-size:15.5px}header h1{font-size:17px}kbd{display:none}}
+
+/* toque (celular e tablet): esconde atalhos de teclado e mostra dica de toque */
+@media (hover:none) and (pointer:coarse){kbd,.dicateclado{display:none}.dicatoque{display:block}}
+/* tablet em pé */
+@media (min-width:600px) and (orientation:portrait){
+  .wrap{max-width:900px;padding:calc(18px + env(safe-area-inset-top)) 22px 130px}.acoes .in{max-width:900px}
+  header h1{font-size:22px}header small{font-size:14px}.selo-savin{width:70px;height:70px}
+  .filtros button{font-size:15.5px;padding:11px 14px}.pilula{font-size:14.5px;padding:7px 14px}
+  .lamina img{max-height:50vh}.p{font-size:22px;padding:18px 26px 20px}
+  .r{padding:20px 26px 24px}.item .tx{font-size:17.5px}.item .det{font-size:15.5px}.letra{min-width:34px;height:34px;font-size:15px}
+  .tag{font-size:16.5px}.par{font-size:17.5px}.bizu{font-size:16px}
+  .acoes button{height:62px;font-size:18px;border-radius:18px}
+}
+/* deitado (tablet, celular deitado e computador): lâmina à esquerda, pergunta e resposta à direita */
+@media (orientation:landscape) and (min-width:700px){
+  .wrap{max-width:1320px;padding:calc(14px + env(safe-area-inset-top)) calc(18px + env(safe-area-inset-right)) 104px calc(18px + env(safe-area-inset-left))}
+  .acoes .in{max-width:1320px}
+  .card.com-img{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-rows:auto auto 1fr;align-items:start}
+  .card.com-img .cab{grid-column:1/-1}
+  .card.com-img #i{grid-column:1;grid-row:2/4;position:sticky;top:12px;align-self:start;padding-bottom:16px}
+  .card.com-img .p{grid-column:2;grid-row:2;text-align:left;padding:14px 22px 12px 4px}
+  .card.com-img .r{grid-column:2;grid-row:3;border-top:1px dashed var(--borda);padding:14px 22px 20px 4px}
+  .card.com-img #i{display:flex;justify-content:center}.card.com-img .lamina{margin:12px 14px 0 18px;width:fit-content;background:#0006}
+  .card.com-img .lamina img{max-height:calc(100vh - 345px);max-height:calc(100dvh - 345px);min-height:220px}
+  .card:not(.com-img){max-width:860px;margin:0 auto}
+  .acoes .in{justify-content:flex-end}.acoes button{flex:0 1 260px}.acoes .bsec{flex:0 1 140px!important}
+}
+@media (orientation:landscape) and (min-width:700px) and (max-height:560px){
+  header{margin-bottom:6px;gap:8px}header small{display:none}header h1{font-size:14.5px}.selo-savin{width:32px;height:32px}.icone{width:30px;height:30px;font-size:14px}
+  .filtros{padding:3px}.filtros button{padding:5px 10px;font-size:12.5px}.pilula{padding:3px 9px;font-size:12px}.emb{padding:4px 10px;font-size:12px}
+  .card.com-img .cab{display:none}.card.com-img .lamina{margin-top:8px}.card.com-img #i{padding-bottom:8px}.carimbo div{width:90px;height:90px}
+  .linha2{margin:6px 0 4px}.barra{margin-bottom:8px}
+  .card.com-img .lamina img{max-height:calc(100vh - 215px);max-height:calc(100dvh - 215px);min-height:120px}
+  .p{font-size:16px}.acoes button{height:46px}.wrap{padding-bottom:80px}
+}
 </style><body>
 <div class="wrap">
 <header><svg class="selo-savin" viewBox="0 0 120 120" aria-label="Selo Savin"><defs><path id="circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/>
@@ -161,7 +196,7 @@ button,.card{touch-action:manipulation}
 <text font-family="Segoe UI,Arial" font-size="10.5" font-weight="800" letter-spacing="2.6" fill="#fff"><textPath href="#circ2">★ SELO SAVIN ★ HISTOLOGIA PR2 </textPath></text>
 <text x="60" y="58" text-anchor="middle" font-family="Georgia,serif" font-style="italic" font-size="19" font-weight="700" fill="#fff">Savin</text>
 <text x="60" y="73" text-anchor="middle" font-family="Segoe UI,Arial" font-size="7.5" font-weight="700" letter-spacing="1.5" fill="#fff">APROVADO</text></svg></div>
-<div class="rodape"><span class="dicateclado">Espaço = ver resposta · 1 = errei · 2 = acertei · toque na lâmina para ampliar<br></span><span class="dicatoque">Toque no card para ver a resposta · depois arraste → acertei, ← errei · toque na lâmina para ampliar</span><button id="zerar">Zerar meu histórico de erros</button> · versão 10 · selo Savin</div>
+<div class="rodape"><span class="dicateclado">Espaço = ver resposta · 1 = errei · 2 = acertei · toque na lâmina para ampliar<br></span><span class="dicatoque">Toque no card para ver a resposta · depois arraste → acertei, ← errei · toque na lâmina para ampliar</span><button id="zerar">Zerar meu histórico de erros</button> · versão 11 · selo Savin</div>
 </div>
 <div class="acoes" id="acoes"><div class="in" id="navVer"><button class="bsec" id="pular">Pular</button><button class="bver" id="ver">Ver resposta <kbd>espaço</kbd></button></div>
   <div class="in" id="navNota" style="display:none"><button class="berr" id="errei">✗ Errei <kbd>1</kbd></button><button class="bok" id="acertei">✓ Acertei <kbd>2</kbd></button></div></div>
@@ -194,7 +229,7 @@ function topo(){const n=C.filter(errou).length;$("bErrei").innerHTML="Errei"+(n?
   document.querySelectorAll("[data-f]").forEach(b=>b.classList.toggle("on",b.dataset.f===filtro));
   $("cont").textContent=fila.length?"Card "+Math.min(i+1,fila.length)+" de "+fila.length:"";
   $("nOk").textContent="✓ "+okR;$("nErr").textContent="✗ "+errR;$("barra").style.width=(fila.length?i/fila.length*100:0)+"%"}
-function mostra(){const c=fila[i];$("t").textContent=c.t;$("t").className="tema "+(c.t==="Circulatório"?"circ":"resp");
+function mostra(){const c=fila[i];$("card").classList.toggle("com-img",!!c.img);$("t").textContent=c.t;$("t").className="tema "+(c.t==="Circulatório"?"circ":"resp");
   $("selo").style.display=errou(c)?"inline-block":"none";
   $("i").innerHTML=c.img?'<div class="lamina" id="lam"><img src="'+c.img+'"><span class="lupa">🔍 ampliar</span></div>':"";
   if(c.img)$("lam").onclick=()=>{$("zoom").innerHTML='<img src="'+c.img+'">';$("zoom").style.display="grid"};
@@ -203,7 +238,7 @@ function mostra(){const c=fila[i];$("t").textContent=c.t;$("t").className="tema 
   const k=$("card");k.style.animation="none";k.offsetHeight;k.style.animation="";
   $("navVer").style.display="flex";$("navNota").style.display="none";topo();scrollTo({top:0})}
 function ver(){$("r").style.display="block";$("navVer").style.display="none";$("navNota").style.display="flex";
-  setTimeout(()=>$("r").scrollIntoView({behavior:"smooth",block:"start"}),60)}
+  if(!matchMedia("(orientation:landscape) and (min-width:700px)").matches||!$("card").classList.contains("com-img"))setTimeout(()=>$("r").scrollIntoView({behavior:"smooth",block:"start"}),60)}
 let seguidas=0;
 function confete(){const cv=$("confete"),x=cv.getContext("2d");cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio;x.scale(devicePixelRatio,devicePixelRatio);
   const cores=["#22c55e","#4ade80","#f0679e","#8b5cf6","#facc15","#38bdf8"],cx=innerWidth/2,cy=innerHeight/2,ps=[];
